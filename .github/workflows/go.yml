@@ -33,5 +33,9 @@ jobs:
     - name: ls
       run: ls
 
+    - name: Prepre rpmbuild dir with binary
+      run: mkdir -p ${GITHUB_WORKSPACE}/packages/rpm/rpmbuild/BUILD
+      run: cp rpmtest ${GITHUB_WORKSPACE}/packages/rpm/rpmbuild/BUILD
+
     - name: Create rpm
       run: rpmbuild -bb --define "_topdir ${GITHUB_WORKSPACE}/packages/rpm/rpmbuild" --define "__os_install_post  %{nil}" packages/rpm/rpmtest.spec
