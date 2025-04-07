@@ -28,4 +28,4 @@ jobs:
       run: go test -v ./...
 
     - name: Install rpm
-      run: apt update && apt install rpm
+      run: sudo apt update && sudo apt install rpm
