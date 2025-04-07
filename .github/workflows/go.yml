@@ -27,12 +27,6 @@ jobs:
     - name: Test
       run: go test -v ./...
 
-    - name: pwd
-      run: pwd
-
-    - name: ls
-      run: ls
-
     - name: Prepre rpmbuild BUILD dir
       run: mkdir -p ${GITHUB_WORKSPACE}/packages/rpm/rpmbuild/BUILD
 
@@ -41,3 +35,10 @@ jobs:
 
     - name: Create rpm
       run: rpmbuild -bb --define "_topdir ${GITHUB_WORKSPACE}/packages/rpm/rpmbuild" --define "__os_install_post  %{nil}" packages/rpm/rpmtest.spec
+
+    - name: Release
+      uses: softprops/action-gh-release@v2
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: |
+          ${GITHUB_WORKSPACE}/packages/rpm/rpmbuild/RPMS/x86_64/rpmtest-1-1.x86_64.rpm
