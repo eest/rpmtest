@@ -34,4 +34,4 @@ jobs:
       run: ls
 
     - name: Create rpm
-      run: rpmbuild -bb --define "_topdir ${GITHUB_WORKSPACE}/packages/rpm/rpmbuild" --define "__os_install_post  %{nil}" packaging/rpm/rpmtest.spec
+      run: rpmbuild -bb --define "_topdir ${GITHUB_WORKSPACE}/packages/rpm/rpmbuild" --define "__os_install_post  %{nil}" packages/rpm/rpmtest.spec
