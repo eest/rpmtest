@@ -33,8 +33,10 @@ jobs:
     - name: ls
       run: ls
 
-    - name: Prepre rpmbuild dir with binary
+    - name: Prepre rpmbuild BUILD dir
       run: mkdir -p ${GITHUB_WORKSPACE}/packages/rpm/rpmbuild/BUILD
+
+    - name: Add build artifact to BUILD dir
       run: cp rpmtest ${GITHUB_WORKSPACE}/packages/rpm/rpmbuild/BUILD
 
     - name: Create rpm
