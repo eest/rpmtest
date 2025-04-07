@@ -27,5 +27,5 @@ jobs:
     - name: Test
       run: go test -v ./...
 
-    - name: Install rpm
-      run: sudo apt update && sudo apt install rpm
+    - name: Create rpm
+      run: rpmbuild -bb --define "_topdir ${GITHUB_WORKSPACE}/packaging/rpm/rpmbuild" --define "__os_install_post  %{nil}" packaging/rpm/rpmtest.spec
