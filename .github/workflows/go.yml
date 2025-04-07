@@ -27,5 +27,11 @@ jobs:
     - name: Test
       run: go test -v ./...
 
+    - name: pwd
+      run: pwd
+
+    - name: ls
+      run: ls
+
     - name: Create rpm
       run: rpmbuild -bb --define "_topdir ${GITHUB_WORKSPACE}/packaging/rpm/rpmbuild" --define "__os_install_post  %{nil}" packaging/rpm/rpmtest.spec
